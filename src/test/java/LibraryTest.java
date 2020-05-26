@@ -67,25 +67,25 @@ public class LibraryTest {
     @Test
     public void test007genreCountAddition(){
         library.genrePlus("science");
-        assertEquals(2,library.countGenre("science"));
+        assertEquals(2,library.genreCount("science"));
     }
 
     @Test
     public void test008genreCountSubtraction(){
         library.genreMinus("science");
-        assertEquals(0,library.countGenre("science"));
+        assertEquals(0,library.genreCount("science"));
     }
 
     @Test
     public void test009newGenreCountStart(){
         library.genreNew("action");
-        assertEquals(1,library.countGenre("action"));
+        assertEquals(1,library.genreCount("action"));
     }
 
     @Test
     public void test010bookGenreTracking(){
         library.addBook(book3);
-        assertEquals(2, library.countGenre("science"));
+        assertEquals(2, library.genreCount("science"));
     }
 
     @Test

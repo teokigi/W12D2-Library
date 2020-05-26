@@ -14,13 +14,10 @@ public class Library {
     }
 
     public void addBook(Book book){
-
-        this.collection.add(book);
-        if (genreCheck(book.getGenre())){
-            genrePlus(book.getGenre());
-        } else{
-            genreNew(book.getGenre());
+        if (capCheck()) {
+            this.collection.add(book);
         }
+        genrePlus(book.getGenre());
     }
 
     public int maxCapacity(){
@@ -39,28 +36,38 @@ public class Library {
     }
 
     public boolean genreCheck(String genre){
-        return this.genres.containsValue(genre);
+        return this.genres.containsKey(genre);
     }
 
     public void genrePlus(String genre){
         //this.genres.put(genre, this.genres.get(genre) + 1)
-        Integer temp = this.genres.get(genre);
-        temp++;
-        this.genres.put(genre, temp);
+        if (genreCheck(genre)){
+            Integer temp = this.genres.get(genre);
+            temp++;
+            this.genres.put(genre, temp);
+        } else{
+            genreNew(genre);
+        }
+
     }
 
     public void genreMinus(String genre){
         //this.genres.put(genre, this.genres.get(genre) - 1)
-        Integer temp = this.genres.get(genre);
-        temp--;
-        this.genres.put(genre,temp);
+        if(genreCount(genre) <= 1) {
+            this.genres.put(genre,0);
+        }else {
+            Integer temp = this.genres.get(genre);
+            temp--;
+            this.genres.put(genre, temp);
+        }
     }
 
     public void genreNew(String genre){
         this.genres.put(genre, 1);
     }
 
-    public int countGenre(String genre){
+
+    public int genreCount(String genre){
         if (genreCheck(genre)){
             return this.genres.get(genre);
         } else{
