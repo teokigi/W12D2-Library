@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
 
@@ -32,64 +32,64 @@ public class LibraryTest {
 
     @Test
     public void capacityGateTrue(){
-        assertEquals(true,library.capCheck());
+        assertTrue(library.capCheck());
     }
 
     @Test
     public void capacityGateFalse(){
         library.addBook(book3);
-        assertEquals(false,library.capCheck());
+        assertFalse(library.capCheck());
     }
 
     @Test
-    public void test003addBook(){
+    public void addBook(){
         library.addBook(book3);
         assertEquals(3, library.bookCount());
     }
 
     @Test
-    public void test004addBookWhenCapacityLimitReached(){
+    public void addBookWhenCapacityLimitReached(){
         library.addBook(book3);
         library.addBook(book3);
         assertEquals(3, library.bookCount());
     }
 
     @Test
-    public void test005genreGateTrue(){
-        assertEquals(true,library.genreCheck("science"));
+    public void genreGateTrue(){
+        assertTrue(library.genreCheck("science"));
     }
 
     @Test
-    public void test006genreGateFalse(){
-        assertEquals(false,library.genreCheck("action"));
+    public void genreGateFalse(){
+        assertFalse(library.genreCheck("action"));
     }
 
     @Test
-    public void test007genreCountAddition(){
+    public void genreCountAddition(){
         library.genrePlus("science");
         assertEquals(2,library.genreCount("science"));
     }
 
     @Test
-    public void test008genreCountSubtraction(){
+    public void genreCountSubtraction(){
         library.genreMinus("science");
         assertEquals(0,library.genreCount("science"));
     }
 
     @Test
-    public void test009newGenreCountStart(){
+    public void newGenreCountStart(){
         library.genreNew("action");
         assertEquals(1,library.genreCount("action"));
     }
 
     @Test
-    public void test010bookGenreTracking(){
+    public void bookGenreTracking(){
         library.addBook(book3);
         assertEquals(2, library.genreCount("science"));
     }
 
     @Test
-    public void test011rentABook(){
+    public void rentABook(){
         library.removeBook(book2);
         assertEquals(1, library.bookCount());
     }
