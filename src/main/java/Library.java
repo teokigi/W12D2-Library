@@ -3,9 +3,9 @@ import java.util.HashMap;
 
 public class Library {
 
-    private ArrayList<Book> collection;
-    private HashMap<String,Integer> genres;
-    private int bookCapacity;
+    private final ArrayList<Book> collection;
+    private final HashMap<String,Integer> genres;
+    private final int bookCapacity;
 
     public Library(int capacity){
         this.collection = new ArrayList<>();
@@ -24,11 +24,7 @@ public class Library {
         return this.bookCapacity;
     }
     public boolean capCheck(){
-        if (bookCount()<maxCapacity()){
-            return true;
-        } else{
-            return false;
-        }
+        return bookCount() < maxCapacity();
     }
 
     public int bookCount(){
@@ -40,11 +36,8 @@ public class Library {
     }
 
     public void genrePlus(String genre){
-        //this.genres.put(genre, this.genres.get(genre) + 1)
         if (genreCheck(genre)){
-            Integer temp = this.genres.get(genre);
-            temp++;
-            this.genres.put(genre, temp);
+            this.genres.put(genre, this.genres.get(genre) + 1);
         } else{
             genreNew(genre);
         }
@@ -52,13 +45,10 @@ public class Library {
     }
 
     public void genreMinus(String genre){
-        //this.genres.put(genre, this.genres.get(genre) - 1)
         if(genreCount(genre) <= 1) {
             this.genres.put(genre,0);
         }else {
-            Integer temp = this.genres.get(genre);
-            temp--;
-            this.genres.put(genre, temp);
+            this.genres.put(genre, this.genres.get(genre) - 1);
         }
     }
 
