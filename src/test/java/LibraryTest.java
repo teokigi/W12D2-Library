@@ -33,20 +33,42 @@ public class LibraryTest {
     @Test
     public void addBook(){
         library.addBook(book3);
-        assertEqual(3, library.bookCount());
+        assertEquals(3, library.bookCount());
     }
 
     @Test
     public void addBookWhenCapacityLimitReached(){
         library.addBook(book3);
         library.addBook(book3);
-        assertEqual(3, library.bookCount());
+        assertEquals(3, library.bookCount());
     }
 
     @Test
     public void bookGenreTracking(){
         library.addBook(book3);
         assertEquals(2, library.countGenre("science"));
+    }
+
+    @Test
+    public void genreGateTrue(){
+        assertEquals(true,library.genreCheck("science"));
+    }
+
+    @Test
+    public void genreGateFalse(){
+        assertEquals(false,library.genreCheck("action"));
+    }
+
+    @Test
+    public void genreCountAddition(){
+        library.genrePlus("science");
+        assertEquals(2,library.countGenre("science"));
+    }
+
+    @Test
+    public void genreCountSubtraction(){
+        library.genreMinus("science");
+        assertEquals(0,library.countGenre("science"));
     }
 
     @Test
