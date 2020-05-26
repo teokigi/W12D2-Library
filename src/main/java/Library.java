@@ -14,6 +14,7 @@ public class Library {
     }
 
     public void addBook(Book book){
+
         this.collection.add(book);
         if (genreCheck(book.getGenre())){
             genrePlus(book.getGenre());
@@ -24,6 +25,13 @@ public class Library {
 
     public int maxCapacity(){
         return this.bookCapacity;
+    }
+    public boolean capCheck(){
+        if (bookCount()<maxCapacity()){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public int bookCount(){

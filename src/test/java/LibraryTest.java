@@ -22,7 +22,7 @@ public class LibraryTest {
 
     @Test
     public void hasCapacity(){
-        assertEquals(5,library.maxCapacity());
+        assertEquals(3,library.maxCapacity());
     }
 
     @Test
@@ -31,54 +31,65 @@ public class LibraryTest {
     }
 
     @Test
-    public void addBook(){
+    public void capacityGateTrue(){
+        assertEquals(true,library.capCheck());
+    }
+
+    @Test
+    public void capacityGateFalse(){
+        library.addBook(book3);
+        assertEquals(false,library.capCheck());
+    }
+
+    @Test
+    public void test003addBook(){
         library.addBook(book3);
         assertEquals(3, library.bookCount());
     }
 
     @Test
-    public void addBookWhenCapacityLimitReached(){
+    public void test004addBookWhenCapacityLimitReached(){
         library.addBook(book3);
         library.addBook(book3);
         assertEquals(3, library.bookCount());
     }
 
     @Test
-    public void genreGateTrue(){
+    public void test005genreGateTrue(){
         assertEquals(true,library.genreCheck("science"));
     }
 
     @Test
-    public void genreGateFalse(){
+    public void test006genreGateFalse(){
         assertEquals(false,library.genreCheck("action"));
     }
 
     @Test
-    public void genreCountAddition(){
+    public void test007genreCountAddition(){
         library.genrePlus("science");
         assertEquals(2,library.countGenre("science"));
     }
 
     @Test
-    public void genreCountSubtraction(){
+    public void test008genreCountSubtraction(){
         library.genreMinus("science");
         assertEquals(0,library.countGenre("science"));
     }
 
     @Test
-    public void newGenreCountStart(){
+    public void test009newGenreCountStart(){
         library.genreNew("action");
         assertEquals(1,library.countGenre("action"));
     }
 
     @Test
-    public void bookGenreTracking(){
+    public void test010bookGenreTracking(){
         library.addBook(book3);
         assertEquals(2, library.countGenre("science"));
     }
 
     @Test
-    public void rentABook(){
+    public void test011rentABook(){
         library.removeBook(book2);
         assertEquals(1, library.bookCount());
     }
