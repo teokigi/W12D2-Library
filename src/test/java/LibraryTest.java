@@ -13,7 +13,7 @@ public class LibraryTest {
     @Before
     public void before(){
         book1 = new Book("title","author","genre");
-        book2 = new Book("Applied Physics","Mr fizizist","science");
+        book2 = new Book("Applied Physics","Mr Fizzy","science");
         book3 = new Book("Psychology", "Mr Peterson", "science");
         library = new Library(3);
         library.addBook(book1);
