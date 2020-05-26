@@ -21,6 +21,7 @@ public class borrowerTest {
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
+        libraryMember = new Borrower("Tony");
     }
 
     @Test
@@ -29,20 +30,20 @@ public class borrowerTest {
     }
 
     @Test
-    public void emptyInitialCollection(){
-        assertFalse(libraryMember.collectionCount());
+    public void emptyInitialrentalListing(){
+        assertEquals(0,libraryMember.rentalListingCount());
     }
 
     @Test
     public void borrowABook(){
-        libraryMember.borrow(book1);
-        assertEquals(1,libraryMember.collectionCount());
+        libraryMember.borrow(book1,library);
+        assertEquals(1,libraryMember.rentalListingCount());
     }
 
     @Test
     public void handInABook(){
-        libraryMember.borrow(book1);
-        libraryMember.handIn(book1);
-        assertFalse(libraryMember.collectionCount());
+        libraryMember.borrow(book1,library);
+        libraryMember.handIn(book1,library);
+        assertEquals(0,libraryMember.rentalListingCount());
     }
 }
