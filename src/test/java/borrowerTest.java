@@ -30,7 +30,7 @@ public class borrowerTest {
     }
 
     @Test
-    public void emptyInitialrentalListing(){
+    public void emptyInitialRentalListing(){
         assertEquals(0,libraryMember.rentalListingCount());
     }
 
