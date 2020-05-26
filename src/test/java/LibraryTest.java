@@ -44,12 +44,6 @@ public class LibraryTest {
     }
 
     @Test
-    public void bookGenreTracking(){
-        library.addBook(book3);
-        assertEquals(2, library.countGenre("science"));
-    }
-
-    @Test
     public void genreGateTrue(){
         assertEquals(true,library.genreCheck("science"));
     }
@@ -72,9 +66,21 @@ public class LibraryTest {
     }
 
     @Test
+    public void newGenreCountStart(){
+        library.genreNew("action");
+        assertEquals(1,library.countGenre("action"));
+    }
+
+    @Test
+    public void bookGenreTracking(){
+        library.addBook(book3);
+        assertEquals(2, library.countGenre("science"));
+    }
+
+    @Test
     public void rentABook(){
         library.removeBook(book2);
-        assertEquals(2, library.bookCount());
+        assertEquals(1, library.bookCount());
     }
 
 
