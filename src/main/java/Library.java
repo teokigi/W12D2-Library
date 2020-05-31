@@ -23,6 +23,7 @@ public class Library {
     public int maxCapacity(){
         return this.bookCapacity;
     }
+
     public boolean capCheck(){
         return bookCount() < maxCapacity();
     }
